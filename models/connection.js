@@ -1,26 +1,17 @@
-// require('dotenv').config();
-const { MongoClient } = require('mongodb');
+const mysql = require('mysql2/promise');
 
-let schema = null;
-DB_URL= 'mongodb://localhost:27017/webchat/';
-DB_NAME= 'webchat';  
+// const connection = mysql.createPool({
+//   host: 'localhost',
+//   user: 'john',
+//   password: 'Password1@',
+//   database: 'osf898i7seo88lnz',
+// });
 
-async function connection() {
-  if (schema) return Promise.resolve(schema);
-  return MongoClient
-    .connect(DB_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    })
-    .then((conn) => conn.db(DB_NAME))
-    .then((dbSchema) => {
-      schema = dbSchema;
-      return schema;
-    })
-    .catch((err) => {
-      console.error(err);
-      process.exit(1);
-    });
-}
+const connection = mysql.createPool({
+  host: 'kfgk8u2ogtoylkq9.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+  user: 'lfb5fx7xngfxmx2k',
+  password: 'ecmsdack3fbbycvf',
+  database: 'b3hmn9p6pdkccpij',
+})
 
 module.exports = connection;
