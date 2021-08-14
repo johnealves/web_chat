@@ -2,7 +2,7 @@
 
 
 ## O que deverá ser desenvolvido
-Este projeto contém um _chat_ online e ao utilizar essa aplicação um usuário deverá ser capaz de:
+Este projeto contém um _chat_ online e ao utilizar essa aplicação um usuário é capaz de:
 
  - Usar um front-end para enviar mensagens a clientes conectados;
  - Visualizar o histórico de mensagens da conversa;
