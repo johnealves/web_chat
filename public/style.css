@@ -1,0 +1,35 @@
+aside {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 25rem;
+}
+
+ul {
+  height: 100%;
+  margin: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  white-space: nowrap;
+}
+
+
+li {
+  list-style-type: none;
+  margin-bottom: 0.5rem;
+}
+
+.web-chat {
+  height: 80vh;
+  display: flex;
+}
+
+.users {
+  border: 1px solid black;
+  flex-grow: 1;
+}
+
+.messages {
+  border: 1px solid black;
+  width: 100%;
+}

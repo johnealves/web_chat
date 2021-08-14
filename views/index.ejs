@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+  <!-- <style>
+    aside {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      width: 25rem;
+    }
+
+    ul {
+      height: 100%;
+      margin: 0;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      white-space: nowrap;
+    }
+
+
+    li {
+      list-style-type: none;
+      margin-bottom: 0.5rem;
+    }
+
+    .web-chat {
+      height: 80vh;
+      display: flex;
+    }
+
+    .users {
+      border: 1px solid black;
+      flex-grow: 1;
+    }
+
+    .messages {
+      border: 1px solid black;
+      width: 100%;
+    }
+  </style> -->
+  <title>Web charset</title>
+</head>
+<body>
+  <div class="home-container">
+    <div class="web-chat">
+      <aside>
+        <div>
+          <input id="text-nickname" data-testid="nickname-box" type="text" placeholder="insira seu nick name"/>
+          <button type="submit" id="add-nickname" data-testid="nickname-button" >
+            Salvar
+          </button>
+        </div>
+        <div class='users'>
+          <ul id="userList">
+            <li id="onlineUser" class='online-user' data-testid="online-user"></li>
+          </ul>
+        </div>
+      </aside>
+      <section class='messages'>
+        <ul class="message-list">
+          <% messages.forEach(({ message, nickname, timestamp }) => { %>
+            <li data-testid="message"><%= `${timestamp} - ${nickname}: ${message}` %></li>
+          <% }) %>
+        </ul>
+      </section>
+    </div>
+    <form>
+      <input type="text" id="text-message" data-testid="message-box" placeholder="Digite uma nova mensagem aqui">
+      <button type="reset" id="sendMessage" data-testid="send-button">
+        Enviar
+      </button>
+    </form>
+  </div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+  <!-- <script>
+    const socket = io();
+    
+    // let nickname = localStorage.getItem('nickname')
+    let nickname = (Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)).slice(-16);
+    localStorage.setItem('nickname', nickname);
+
+    const ulUsers = document.getElementById('userList');
+    let user = document.getElementById('onlineUser');
+    user.innerText = nickname;
+    socket.emit('new_user', nickname);
+
+    const sendButton = document.getElementById('sendMessage');
+    const sendNickname= document.getElementById('add-nickname')
+    const listMessages = document.querySelector(".message-list");
+
+
+    sendNickname.addEventListener('click', () => {
+      const oldNickname = nickname;
+      nickname = document.getElementById('text-nickname').value;
+      socket.emit('update_nickname', { oldNickname, nickname })
+      localStorage.setItem('nickname', nickname);
+      let rename = document.getElementById('onlineUser');
+      rename.innerText = nickname;  
+    })
+
+    sendButton.addEventListener('click', () => {
+      if (nickname) {
+        const chatMessage = document.getElementById('text-message').value
+        socket.emit('message', { chatMessage, nickname })
+      } else {
+        console.log('Error: "nickname is required"');
+      }
+    })
+
+    socket.on('message', (message) => {
+      let item = document.createElement('li');
+      item.innerText = message;
+      item.setAttribute('data-testid', 'message');
+      listMessages.appendChild(item);
+      // window.scrollTo(0, document.body.scrollHeight);
+    })
+
+    socket.on('onlineUsers', (onlineUsers) => {
+      const userList = document.getElementById('userList');
+      const users = document.querySelectorAll('.online-user');
+      console.log(users)
+      users.forEach((user) => (user.id !== 'onlineUser') && userList.removeChild(user))
+      console.log(document.querySelectorAll('.online-user'))
+      onlineUsers.forEach((user) => {
+        if (user !== nickname) {
+          const li = document.createElement('li');
+          li.innerText = user;
+          li.className = 'online-user';
+          li.setAttribute('data-testid', 'online-user');
+          userList.appendChild(li);
+        }
+      })
+    })
+
+  </script> -->
+</body>
+</html>
