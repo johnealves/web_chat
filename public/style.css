@@ -78,7 +78,7 @@ li:nth-child(odd) {
     align-items: center;
     display: flex;
     flex-direction: column;
-    height: 85vh;
+    height: 75vh;
   }
   
   aside {

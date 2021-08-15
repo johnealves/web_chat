@@ -1,11 +1,13 @@
 const socket = window.io();
     
-// let nickname = localStorage.getItem('nickname')
-let nickname = (
-    Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
-  )
-  .slice(-16);
-localStorage.setItem('nickname', nickname);
+let nickname = localStorage.getItem('nickname')
+if (!nickname) {
+  let nickname = (
+      Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+    )
+    .slice(-16);
+  localStorage.setItem('nickname', nickname);
+}
 
 // const ulUsers = document.getElementById('userList');
 const user = document.getElementById('onlineUser');
