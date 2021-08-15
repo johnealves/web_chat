@@ -6,11 +6,16 @@
   }
   
   ul {
-    list-style-type: none;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    white-space: nowrap;
   }
 
   .web-chat {
-    height: 90vh;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 85vh;
   }
   
   aside {
@@ -26,11 +31,11 @@
   }
 
   .messages {
-    flex-grow: 2;
-  }
-
-  #form-send-message {
-    
+    text-align: justify;
+    padding: 10px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 100%;
   }
 }
 

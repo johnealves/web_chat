@@ -39,7 +39,7 @@ socket.on('message', (message) => {
   item.innerText = message;
   item.setAttribute('data-testid', 'message');
   listMessages.appendChild(item);
-  // window.scrollTo(0, document.body.scrollHeight);
+  window.scrollTo(0, document.body.scrollHeight);
 });
 
 // socket.on('onlineUsers', (onlineUsers) => {
