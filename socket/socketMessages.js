@@ -9,7 +9,7 @@ module.exports = (io) => {
     socket.on('message', async ({ chatMessage, nickname: userNickname }) => {
       const date = moment().format('DD-MM-YYYY h:mm:ss a');
       io.emit('message', { userNickname, chatMessage});
-      await saveMessage(chatMessage, nickname, date);
+      await saveMessage(chatMessage, userNickname, date);
      });
   });
 };
