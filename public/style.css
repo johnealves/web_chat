@@ -43,10 +43,6 @@ li:before {
   text-align: right;
 }
 
-/* li:nth-child(odd) {
-  background: #efefef;
-} */
-
 .home-container {
   height: 90vh;
 }
@@ -153,6 +149,7 @@ aside {
 
 @media (min-width:1025px) {
   aside {
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -162,12 +159,9 @@ aside {
   ul {
     height: 100%;
     margin: 0;
-    /* overflow-x: hidden;
-    overflow-y: scroll; */
-    /* white-space: nowrap; */
   }
   
-  
+
   li {
     list-style-type: none;
     margin-bottom: 0.5rem;
@@ -180,7 +174,7 @@ aside {
   }
   
   .users {
-    border: 1px solid black;
+    border: 1px solid rgba(0, 0, 0, 0.452);
     flex-grow: 1;
   }
 
