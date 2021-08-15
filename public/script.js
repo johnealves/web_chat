@@ -42,17 +42,17 @@ socket.on('message', (message) => {
   window.scrollTo(0, document.body.scrollHeight);
 });
 
-// socket.on('onlineUsers', (onlineUsers) => {
-//   const userList = document.getElementById('userList');
-//   const users = document.querySelectorAll('.online-user');
-//   users.forEach((userOn) => (userOn.id !== 'onlineUser') && userList.removeChild(userOn));
-//   onlineUsers.forEach((userOn) => {
-//     if (userOn !== nickname) {
-//       const li = document.createElement('li');
-//       li.innerHTML = userOn;
-//       li.className = 'online-user';
-//       li.setAttribute('data-testid', 'online-user');
-//       userList.appendChild(li);
-//     }
-//   });
-// });
+socket.on('onlineUsers', (onlineUsers) => {
+  const userList = document.getElementById('userList');
+  const users = document.querySelectorAll('.online-user');
+  users.forEach((userOn) => (userOn.id !== 'onlineUser') && userList.removeChild(userOn));
+  onlineUsers.forEach((userOn) => {
+    if (userOn !== nickname) {
+      const li = document.createElement('li');
+      li.innerHTML = userOn;
+      li.className = 'online-user';
+      li.setAttribute('data-testid', 'online-user');
+      userList.appendChild(li);
+    }
+  });
+});
