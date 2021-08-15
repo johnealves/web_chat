@@ -16,26 +16,36 @@ body {
 
 ul {
   padding: 0;
-  white-space: nowrap;
+  /* white-space: nowrap; */
 }
 
 li {
+  background-color: #FFFFFF;
+  border: 0.2px solid rgba(0, 0, 0, 0.226);
+  border-radius: 5px;
   list-style-type: none;
-  position:relative;
   margin-bottom:0.5em;
+  padding: 10px;
+  position:relative;
 }
 
 li:before {
   /* content: '•'; */
-  display: inline-block;
-  position: absolute;
+  /* display: inline-block;
+  position: absolute; */
+  overflow-wrap: break-word;
   left: -1em;
   color:#00c7ba;
 }
 
-li:nth-child(odd) {
-  background: #efefef;
+.self-message {
+  background-color: #bef8ac;
+  text-align: right;
 }
+
+/* li:nth-child(odd) {
+  background: #efefef;
+} */
 
 .home-container {
   height: 90vh;
@@ -43,9 +53,14 @@ li:nth-child(odd) {
 
 .web-chat {
   align-items: center;
+  background-color: #E7DFD6;
   display: flex;
   flex-direction: column;
   height: 85vh;
+}
+
+aside {
+  background-color: #FFFFFF;
 }
 
 .users li {
@@ -58,7 +73,7 @@ li:nth-child(odd) {
 }
 
 #onlineUser {
-  background-color: chartreuse;
+  background-color: #D1F8C5;
 }
 
 .messages {
@@ -80,9 +95,9 @@ li:nth-child(odd) {
 @media (max-width:600px) {
   
   ul {
-    overflow-x: hidden;
-    overflow-y: scroll;
-    white-space: nowrap;
+    /* overflow-x: hidden;
+    overflow-y: scroll; */
+    /* white-space: nowrap; */
   }
 
   li {

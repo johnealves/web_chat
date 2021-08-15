@@ -6,9 +6,9 @@ module.exports = (io) => {
     const messages = await getAll();
     socket.emit('load_messages', messages);
   
-    socket.on('message', async ({ chatMessage, nickname }) => {
+    socket.on('message', async ({ chatMessage, nickname: userNickname }) => {
       const date = moment().format('DD-MM-YYYY h:mm:ss a');
-      io.emit('message', { nickname, chatMessage});
+      io.emit('message', { userNickname, chatMessage});
       await saveMessage(chatMessage, nickname, date);
      });
   });

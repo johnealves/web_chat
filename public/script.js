@@ -56,12 +56,13 @@ sendButton.addEventListener('click', () => {
   }
 });
 
-socket.on('message', ({ nickname, chatMessage }) => {
+socket.on('message', ({ userNickname, chatMessage }) => {
   const item = document.createElement('li');
-  item.innerHTML = `<span>${nickname}</span>: ${chatMessage}`;
+  item.innerHTML = `<span>${userNickname}</span>: ${chatMessage}`;
   item.setAttribute('data-testid', 'message');
+  if (userNickname === nickname) item.className = 'self-message';
   listMessages.appendChild(item);
-  window.scrollTo(0, document.body.scrollHeight);
+  item.scrollIntoView();
 });
 
 socket.on('onlineUsers', (onlineUsers) => {
