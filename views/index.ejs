@@ -19,15 +19,15 @@
           </button>
         </div>
         <div class='users'>
+          <li id="onlineUser" class='online-user' data-testid="online-user"></li>
           <ul id="userList">
-            <li id="onlineUser" class='online-user' data-testid="online-user"></li>
           </ul>
         </div>
       </aside>
       <section class='messages'>
         <ul class="message-list">
           <% messages.forEach(({ message, nickname, timestamp }) => { %>
-            <li data-testid="message"><%= `${nickname}: ${message}` %></li>
+            <li data-testid="message"><span><%= `${nickname}` %></span><%=`: ${message}` %></li>
           <% }) %>
         </ul>
       </section>

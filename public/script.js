@@ -1,8 +1,9 @@
 const socket = window.io();
     
-let nickname = localStorage.getItem('nickname')
-if (!nickname) {
-  let nickname = (
+let nickname;
+nickname = localStorage.getItem('nickname')
+if (!nickname || null) {
+  nickname = (
       Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
     )
     .slice(-16);
@@ -36,9 +37,9 @@ sendButton.addEventListener('click', () => {
   }
 });
 
-socket.on('message', (message) => {
+socket.on('message', ({ nickname, chatMessage }) => {
   const item = document.createElement('li');
-  item.innerText = message;
+  item.innerHTML = `<span>${nickname}</span>: ${chatMessage}`;
   item.setAttribute('data-testid', 'message');
   listMessages.appendChild(item);
   window.scrollTo(0, document.body.scrollHeight);
