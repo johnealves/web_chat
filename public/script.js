@@ -2,22 +2,28 @@ const socket = window.io();
     
 let nickname;
 nickname = localStorage.getItem('nickname')
-if (!nickname || null) {
-  nickname = (
-      Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
-    )
-    .slice(-16);
-  localStorage.setItem('nickname', nickname);
-}
+// if (!nickname || null) {
+//   nickname = (
+//       Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+//     )
+//     .slice(-16);
+//   localStorage.setItem('nickname', nickname);
+// }
 
 // const ulUsers = document.getElementById('userList');
-const user = document.getElementById('onlineUser');
-user.innerText = ` Nickname: ${nickname}`;
-socket.emit('new_user', nickname);
+if (nickname) {
+  const user = document.getElementById('onlineUser');
+  user.innerText = ` Nickname: ${nickname}`;
+  socket.emit('new_user', nickname);
+} else {
+  const user = document.getElementById('onlineUser');
+  user.innerText = 'Escolha um nickname';
+}
 
 const sendButton = document.getElementById('sendMessage');
 const sendNickname = document.getElementById('add-nickname');
 const listMessages = document.querySelector('.message-list');
+const inputMessage = document.querySelector('#text-message');
 
 sendNickname.addEventListener('click', () => {
   const oldNickname = nickname;
@@ -28,12 +34,25 @@ sendNickname.addEventListener('click', () => {
   rename.innerText = `Nickname: ${nickname}`;  
 });
 
+inputMessage.addEventListener('keypress', (ev) => {
+  if (ev.key === 'Enter') {
+    if (nickname) {
+      const chatMessage = document.getElementById('text-message').value;
+      socket.emit('message', { chatMessage, nickname });
+      inputMessage.value = '';
+    } else {
+      alert('Para mandar mensagens escolha um nome de usuario');
+    }
+  }
+})
+
 sendButton.addEventListener('click', () => {
   if (nickname) {
     const chatMessage = document.getElementById('text-message').value;
     socket.emit('message', { chatMessage, nickname });
+    inputMessage.value = '';
   } else {
-    console.log('Error: "nickname is required"');
+    alert('Para mandar mensagens escolha um nome de usuario');
   }
 });
 
