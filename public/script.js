@@ -9,7 +9,7 @@ localStorage.setItem('nickname', nickname);
 
 // const ulUsers = document.getElementById('userList');
 const user = document.getElementById('onlineUser');
-user.innerText = nickname;
+user.innerText = ` Nickname: ${nickname}`;
 socket.emit('new_user', nickname);
 
 const sendButton = document.getElementById('sendMessage');
@@ -22,7 +22,7 @@ sendNickname.addEventListener('click', () => {
   socket.emit('update_nickname', { oldNickname, nickname });
   localStorage.setItem('nickname', nickname);
   const rename = document.getElementById('onlineUser');
-  rename.innerText = nickname;  
+  rename.innerText = `Nickname: ${nickname}`;  
 });
 
 sendButton.addEventListener('click', () => {
@@ -42,17 +42,17 @@ socket.on('message', (message) => {
   // window.scrollTo(0, document.body.scrollHeight);
 });
 
-socket.on('onlineUsers', (onlineUsers) => {
-  const userList = document.getElementById('userList');
-  const users = document.querySelectorAll('.online-user');
-  users.forEach((userOn) => (userOn.id !== 'onlineUser') && userList.removeChild(userOn));
-  onlineUsers.forEach((userOn) => {
-    if (userOn !== nickname) {
-      const li = document.createElement('li');
-      li.innerHTML = userOn;
-      li.className = 'online-user';
-      li.setAttribute('data-testid', 'online-user');
-      userList.appendChild(li);
-    }
-  });
-});
+// socket.on('onlineUsers', (onlineUsers) => {
+//   const userList = document.getElementById('userList');
+//   const users = document.querySelectorAll('.online-user');
+//   users.forEach((userOn) => (userOn.id !== 'onlineUser') && userList.removeChild(userOn));
+//   onlineUsers.forEach((userOn) => {
+//     if (userOn !== nickname) {
+//       const li = document.createElement('li');
+//       li.innerHTML = userOn;
+//       li.className = 'online-user';
+//       li.setAttribute('data-testid', 'online-user');
+//       userList.appendChild(li);
+//     }
+//   });
+// });
