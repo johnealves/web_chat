@@ -1,6 +1,6 @@
 # Repositório do projeto WebChat!
 
-esta aplicação pode ser acessado no link: <a href="https://john-web-chat.herokuapp.com/" target="blank" >webChat</a>
+esta aplicação pode ser acessado no link: <a href="https://john-web-chat.herokuapp.com/" target=blank >webChat</a>
 
 Este projeto contém um _chat_ online e ao utilizar essa aplicação um usuário é capaz de:
 
